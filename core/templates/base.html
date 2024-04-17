@@ -59,7 +59,7 @@
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#">Basket</a>
             </li>
           </ul>
           <form class="d-flex" role="search">
@@ -89,8 +89,13 @@
               {% endif %}
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="{% url "login_page" %}">Login</a></li>
+                {% if user.is_authenticated %}
                 <li><a class="dropdown-item" href="{% url "logout" %}">Logout</a></li>
+                {% else %}
+                <li><a class="dropdown-item" href="{% url "login_page" %}">Login</a></li>
+                {% endif %}
+            </ul>
+            
               </ul>
             </li>
           </ul>
